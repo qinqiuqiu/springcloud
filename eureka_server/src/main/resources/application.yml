@@ -1,0 +1,17 @@
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+#      defaultZone: http://localhost:8761/eureka
+       defaultZone: http://qinqiuqiu:123@localhost:8761/eureka #enreka server 后台支持口令认证
+security:
+  basic:
+    enabled: true
+  user:
+    name: qinqiuqiu
+    password: 123
+
