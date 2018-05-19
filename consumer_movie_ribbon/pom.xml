@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.troy</groupId>
-	<artifactId>consumer_movie</artifactId>
+	<artifactId>consumer_movie_ribbon</artifactId>
 	<packaging>jar</packaging>
-	<name>consumer_movie</name>
+	<name>consumer_movie_ribbon</name>
 
 	<parent>
 		<groupId>org.troy</groupId>
