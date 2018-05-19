@@ -3,6 +3,8 @@ server:
 
 eureka:
   client:
+    healthcheck:
+          enabled: true
     service-url:
 #      defaultZone: http://localhost:8761/eureka
        defaultZone: http://qinqiuqiu:123@localhost:8761/eureka #enreka server 后台支持口令认证
