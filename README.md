@@ -45,3 +45,30 @@ consumer_movie_ribbon 电影微服务 eureka client
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-actuator</artifactId>
             </dependency>
+
+consumer_movie_ribbon_ext1 自定义Ribbon负载均衡算法
+    不在同一个包中：
+        org.troy.config.MyRibbonLoadBalance; #自定义Ribbon算法
+        org.troy.ribbon.ConsumerMovieRibbonExt1Application  # SpringBoot 启动类
+        注意：在SpringBoot Application启动类@ComponentScan扫描不到MyRibbonLoadBalance
+
+    如果在同一个包中：
+        MyRibbonLoadBalance随机负载均衡算法就会作为全局的负载均衡算法(覆盖默认负载均衡算法);
+        默认全局负载均衡算法为轮询。
+
+        如果写自定义负载均衡算法与启动类在同一个包下；但不想覆盖默认负载均衡算法，可通过自定义注解来解决:
+            启动类上添加注解代码:
+                @ComponentScan(excludeFilters = { @ComponentScan.Filter(type = FilterType.ANNOTATION
+                    , value = ExcludeFooComponentScan.class) }) #ExcludeFooComponentScan为自定义注解
+
+            自定义Ribbon算法类上添加自定义注解@ExcludeFooComponentScan
+
+consumer_movie_ribbon_ext2 定自义Ribbon负载均衡算法
+    在application配置文件中配置
+        serviceId.ribbon.NFLoadBalancerRuleClassName: com.netflix.loadbalance.RandomRule # serviceId为访问微服务的服务名(spring.application.name)
+
+
+
+
+
+

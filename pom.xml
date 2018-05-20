@@ -12,7 +12,10 @@
     <modules>
         <module>eureka_server</module>
         <module>provider_user</module>
-        <module>consumer_movie</module>
+        <module>consumer_movie_ribbon</module>
+        <module>consumer_movie_ribbon_ext1</module>
+        <module>consumer_movie_ribbon_ext2</module>
+        <module>consumer_movie_ribbon_without_eureka</module>
     </modules>
 
     <properties>

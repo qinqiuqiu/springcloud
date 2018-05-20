@@ -1,4 +1,4 @@
-package org.troy.controller;
+package org.troy.ribbon.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
