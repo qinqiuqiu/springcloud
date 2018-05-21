@@ -17,6 +17,7 @@
         <module>consumer_movie_ribbon_ext2</module>
         <module>consumer_movie_ribbon_without_eureka</module>
         <module>consumer_movie_feign</module>
+        <module>consumer_movie_feign_ext</module>
     </modules>
 
     <properties>

@@ -1,4 +1,4 @@
-package org.troy.ribbon.controller;
+package org.troy.feign.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -34,11 +34,11 @@ public class IndexController {
     public Object getLoadBalance(){
         ServiceInstance s1 = loadBalancerClient.choose("provider-user-service");
 
-        ServiceInstance s2 = loadBalancerClient.choose("provider-user-service2");
+//        ServiceInstance s2 = loadBalancerClient.choose("provider-user-service2");
 
         Map<String, String> map = new HashMap<String, String>();
         map.put(s1.getServiceId(), s1.getHost() + ":" + s1.getPort());
-        map.put(s2.getServiceId(), s2.getHost() + ":" + s2.getPort());
+        //map.put(s2.getServiceId(), s2.getHost() + ":" + s2.getPort());
 
         System.out.println("map ======================> " + map);
         return map;

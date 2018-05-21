@@ -1,5 +1,5 @@
 server:
-  port: 7100
+  port: 7110
 
 eureka:
   client:
@@ -13,22 +13,13 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 
+
 logging:
   level:
     root: INFO
     org.troy: DEBUG
+    org.troy.feign.UserFeignClient: DEBUG
 
 spring:
   application:
-    name: consumer-movie-service
-
-#配置文件中访问微服务provider-user-service; 使用随机负载均衡算法
-provider-user-service:
-    ribbon:
-      NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-      listOfServers: localhost:7001,localhost:7000 #设置ribbon访问的微服务地址
-
-#feign 禁止使用eureka(获取eureka拉取服务列表)
-ribbon:
-  eureka:
-    enabled: false
+    name: consumer-movie-feign-service

@@ -1,4 +1,4 @@
-package org.troy.ribbon.controller;
+package org.troy.feign.controller;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;

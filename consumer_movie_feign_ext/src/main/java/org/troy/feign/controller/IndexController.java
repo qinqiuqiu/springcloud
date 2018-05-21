@@ -1,9 +1,13 @@
-package org.troy.ribbon.controller;
+package org.troy.feign.controller;
 
+import feign.Param;
+import feign.RequestLine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import org.troy.ribbon.UserFeignClient;
+import org.troy.feign.EurekaServerFeignClient;
+import org.troy.feign.UserFeignClient;
 
 /**
  * @title
@@ -17,6 +21,9 @@ public class IndexController {
     @Autowired
     private UserFeignClient userFeignClient;
 
+    @Autowired
+    private EurekaServerFeignClient eurekaServerFeignClient;
+
     @GetMapping("/movie")
     public Object consumer(){
         return userFeignClient.hello();
@@ -25,5 +32,10 @@ public class IndexController {
     @GetMapping("/test-post")
     public Object doPost(){
         return userFeignClient.doPost("{\"code\":0,\"message\":\"..........\"}");
+    }
+
+    @GetMapping("/feign/{serviceName}")
+    public String findServiceName(@PathVariable("serviceName") String serviceName){
+        return eurekaServerFeignClient.findServiceNameByEurekaServer(serviceName);
     }
 }

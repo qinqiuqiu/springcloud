@@ -1,4 +1,4 @@
-package org.troy.ribbon;
+package org.troy.feign;
 
 
 import org.springframework.boot.SpringApplication;
@@ -10,10 +10,10 @@ import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableEurekaClient  // 开启Eureka Client
-public class ConsumerMovieRibbonExt2Application {
+public class ConsumerMovieRibbonWithoutEurekaApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConsumerMovieRibbonExt2Application.class, args);
+		SpringApplication.run(ConsumerMovieRibbonWithoutEurekaApplication.class, args);
 	}
 
 	@Bean

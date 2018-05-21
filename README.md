@@ -69,7 +69,7 @@
 ## consumer_movie_ribbon_ext1模块 自定义Ribbon负载均衡算法
     1.不在同一个包中：
         org.troy.config.MyRibbonLoadBalance; #自定义Ribbon算法
-        org.troy.ribbon.ConsumerMovieRibbonExt1Application  # SpringBoot 启动类
+        org.troy.feign.ConsumerMovieRibbonExt1Application  # SpringBoot 启动类
         注意：在SpringBoot Application启动类@ComponentScan扫描不到MyRibbonLoadBalance
 
     2.如果在同一个包中：
@@ -114,3 +114,12 @@
         Object hello();
     }
 ```
+
+## consumer_movie_feign_ext模块 
+    feign自定义配置
+        1. configuration  详情参考如下类：
+            // 配置访问EurekaServer认证
+            org.troy.config.EurekaConfiguration   
+            // 定义 Feign 支持的契约 (默认为SpringMvcContract, 支持 spring mvc 注解 )
+            org.troy.config.ProviderUserConfiguration
+       
