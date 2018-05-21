@@ -8,8 +8,14 @@
          </dependency>
 
      * application配置
-         security.basic.enabled=true
-         eureka.client.service-url.defaultZone=http://qinqiuqiu:123@localhost:8761/eureka #enreka server 后台支持口令认证
+         security:
+            basic:
+               enabled: true
+         #enreka server 后台支持口令认证
+         eureka:
+            client:
+                service-url:
+                    defaultZone: http://qinqiuqiu:123@localhost:8761/eureka 
 
 ## provider_user用户微服务模块 eureka client
     给微服务定义名称及使用VIP地址访问
@@ -28,21 +34,27 @@
 ```
     @Bean
     /**
-     * 开启客户端的负载均衡; (去Eureka Server端拉取微服务VIP[virtual IP; spring.application.name] 列表; 访问该客户端接口时，
-     * 	执行Ribbon的负载均衡算法; 默认为轮询算法)
+     * 开启客户端的负载均衡; (去Eureka Server端拉取微服务VIP[virtual IP; spring.application.name] 列表; 
+        访问该客户端接口时，执行Ribbon的负载均衡算法; 默认为轮询算法)
      */
     @LoadBalanced
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }
 ```
-    访问用户微服务provider_user  http://host:port/user/hi; 这样存在用户微服务IP或port发生变化后，需要修改对应的IP或port;
+    访问用户微服务provider_user  http://host:port/user/hi; 这样存在用户微服务IP或port发生变化后
+        ，需要修改对应的IP或port;
 
     1. 解决方案
         application配置
-            spring.application.name=provider-user-service
-            eureka.client.instance.prefer-ip-address=true
-            eureka.client.instance.instance-id=${spring.application.name}:${spring.application.instance_id:${server.port}}
+            spring:
+                application:
+                    name: provider-user-service
+            eureka:
+                client:
+                    instance:
+                        prefer-ip-address:  true
+                        instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
 
     2. 微服务监控
         application配置
@@ -72,8 +84,10 @@
             自定义Ribbon算法类上添加自定义注解@ExcludeFooComponentScan
 
 ## consumer_movie_ribbon_ext2模块 定自义Ribbon负载均衡算法
-    在application配置文件中配置
-        serviceId.ribbon.NFLoadBalancerRuleClassName: com.netflix.loadbalance.RandomRule # serviceId为访问微服务的服务名(spring.application.name)
+    在application配置文件中配置 # serviceId为访问微服务的服务名(spring.application.name)
+        serviceId:
+            ribbon:
+                NFLoadBalancerRuleClassName: com.netflix.loadbalance.RandomRule 
 
 ## consumer_movie_ribbon_without_eureka模块
     * ribbon 不依赖eureka的注册中心微服务列表
@@ -87,7 +101,3 @@
             ribbon:
               eureka:
                 enabled: false
-
-
-
-
