@@ -1,8 +1,11 @@
 package org.troy.ribbon.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
@@ -29,5 +32,10 @@ public class IndexController {
         maps.put("name", env.getProperty("spring.application.name"));
         maps.put("port", env.getProperty("server.port"));
         return maps;
+    }
+
+    @PostMapping("/post")
+    public Object doPost(@RequestBody String data){
+        return JSON.parse(data);
     }
 }

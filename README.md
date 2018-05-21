@@ -101,3 +101,16 @@
             ribbon:
               eureka:
                 enabled: false
+                
+## consumer_movie_feign 模块
+    1. 启动类上添加 @EnableFeignClients
+    
+    2. 编写声明式 web client service 接口
+```Java
+    @FeignClient("provider-user-service")  //指定访问微服务接口的serviceId
+    public interface UserFeignClient {
+    
+        @RequestMapping(method = RequestMethod.GET, value = "/hi")
+        Object hello();
+    }
+```
