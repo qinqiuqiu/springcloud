@@ -1,0 +1,24 @@
+server:
+  port: 7100
+
+eureka:
+  client:
+    healthcheck:
+        enabled: true
+
+    service-url:
+#      defaultZone: http://localhost:8761/eureka
+       defaultZone: http://qinqiuqiu:123@localhost:8761/eureka #enreka server 后台支持口令认证
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
+
+logging:
+  level:
+    root: INFO
+    org.troy: DEBUG
+
+spring:
+  application:
+    name: consumer-movie-service

@@ -122,4 +122,19 @@
             org.troy.config.EurekaConfiguration   
             // 定义 Feign 支持的契约 (默认为SpringMvcContract, 支持 spring mvc 注解 )
             org.troy.config.ProviderUserConfiguration
-       
+
+##  eureka_server_ha   高可用
+    eureka server 高可用详情见 application.yml配置文件
+    
+    * eureka 常用配置
+        eureka:
+            dashboard:
+                enabled : false #禁用 http://host:port访问
+                path : /xx  #设置dashboard的访o问路径; 默认 /   
+                
+##  consumer_movie_ribbon_with_hystrix模块  断路器
+    使用断路器
+        1.  启动类上添加注解 @EnableHystrix
+        
+        2.  请求目标方法上添加注解 @HystrixCommand(fallbackMethod = "consumerHystrix") 
+            

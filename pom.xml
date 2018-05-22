@@ -11,10 +11,12 @@
 
     <modules>
         <module>eureka_server</module>
+        <module>eureka_server_ha</module>
         <module>provider_user</module>
         <module>consumer_movie_ribbon</module>
         <module>consumer_movie_ribbon_ext1</module>
         <module>consumer_movie_ribbon_ext2</module>
+        <module>consumer_movie_ribbon_with_hystrix</module>
         <module>consumer_movie_ribbon_without_eureka</module>
         <module>consumer_movie_feign</module>
         <module>consumer_movie_feign_ext</module>
